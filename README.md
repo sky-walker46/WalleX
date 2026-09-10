@@ -1,286 +1,78 @@
-# 💳 Wallex — AI-Powered Student Finance Manager
-
 <div align="center">
+  <img src="./Frontend/assets/logo.svg" alt="Wallex Logo" width="120" />
+  <h1>Wallex - Enterprise Student Finance Manager</h1>
+  <p><strong>Intelligent AI-driven financial management engineered with enterprise-grade React, Node.js, and Google Gemini.</strong></p>
 
-### Intelligent Financial Management for Students, Powered by Generative AI
-
-*Built with React, Node.js, MongoDB & Google Gemini*
-
-![React](https://img.shields.io/badge/React-18-blue)
-![TypeScript](https://img.shields.io/badge/TypeScript-Strict-blue)
-![Node.js](https://img.shields.io/badge/Node.js-18+-green)
-![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-success)
-![Gemini](https://img.shields.io/badge/Google-Gemini-orange)
-![Vitest](https://img.shields.io/badge/Tested-With%20Vitest-yellow)
-
-[🚀 Live Demo](https://wallex-opal.vercel.app)
-
+  [![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-black?style=for-the-badge&logo=vercel)](https://wallex-opal.vercel.app/)
+  [![Backend API](https://img.shields.io/badge/API-Render-46E3B7?style=for-the-badge&logo=render)](https://wallex-backend-iscu.onrender.com)
+  [![Stack](https://img.shields.io/badge/Stack-MERN%20%2B%20Gemini-blue?style=for-the-badge)](#)
 </div>
 
----
+<br />
 
-## 📖 Overview
+Wallex is a comprehensive, mobile-first financial management platform designed specifically for college students. Moving beyond simple budgeting, Wallex utilizes the **Google Gemini Generative AI Model** to automatically parse, classify, and intelligently categorize transaction descriptions with high precision.
 
-**Wallex** is a next-generation, AI-powered financial management platform designed specifically for college students.
-
-Unlike conventional budgeting applications, Wallex leverages **Google Gemini's Generative AI capabilities** to automatically understand, classify, and categorize financial transactions with remarkable accuracy.
-
-Built using modern enterprise engineering practices, the platform combines:
-
-* 🤖 AI-driven transaction intelligence
-* 🔒 Enterprise-grade authentication & security
-* 📊 Smart spending analytics
-* 📱 Mobile-first premium user experience
-* 🧪 Test-driven development architecture
+*This project was engineered adopting strict Silicon Valley industry standards, including Test-Driven Development (TDD) via Vitest, aggressive stateless abstraction, zero-trust HttpOnly cookie architectures, and strict TS typings.*
 
 ---
 
-# ✨ Enterprise Highlights
+## ✨ Enterprise Technical Highlights
 
-## 🤖 Generative AI Transaction Intelligence
-
-Integrated Google Gemini directly into the backend service layer, replacing traditional ML pipelines with a lightweight AI microservice architecture.
-
-### Key Benefits
-
-* Automatic transaction categorization
-* Natural language understanding
-* Intelligent spending classification
-* ~400ms average classification latency
-* Zero model training overhead
+- **Generative AI Microservice Integration**: Replaced heavy traditional ML-Service architectures by directly binding the Node.js routing layer with `@google/genai`, achieving ~400ms transaction classification times.
+- **Custom Global State Abstraction**: Developed `useApi()`, an aggressive custom React hook mimicking *React Query/SWR* that globally manages `loading`, `error`, and `data` network lifecycles, eliminating hundreds of lines of brittle `<useEffect>` boilerplate.
+- **Enterprise Security (Zero-Trust Auth)**: Eradicated XSS vulnerabilities by completely stripping JSON Web Tokens out of `localStorage`. Built a robust authentication interception layer utilizing Node.js `cookie-parser` and Axios `withCredentials: true` to exclusively handle `HttpOnly` secure cookies.
+- **Type-Safe Domain Modeling**: Eliminated `any` compiler warnings via strict, centralized explicit interfaces (`Frontend/types/index.ts`) that strictly mirror the MongoDB NoSQL Mongoose Schemas.
+- **Automated Testing Suite**: Wired up `Vitest` with `jsdom` and React Testing Library to unit test core math algorithms, ensuring float-division precision and zero-divide crashes on financial charting logic.
+- **Ultra-Premium UI/UX**: Designed a heavily animated, natively fluid mobile-first iOS-style bottom floating tab bar, relying heavily on `framer-motion` staggered views, custom Bento-grid metric cards, and heavy glassmorphism/backdrop blurs.
 
 ---
 
-## ⚡ Custom Data Fetching Architecture
+## 🏗️ Core Architecture & Stack
 
-Built a production-style global state abstraction layer through a custom `useApi()` hook.
+### Frontend (User Interface)
+- **Framework**: React 18 + Vite
+- **Language**: Strict TypeScript
+- **Styling**: Vanilla CSS + Tailwind CSS (Bento-grid mechanics)
+- **Animation**: Framer Motion (Hardware-accelerated layout transitions)
+- **Testing**: Vitest + @testing-library/react
 
-### Features
-
-* Centralized API management
-* Global loading states
-* Unified error handling
-* Request lifecycle management
-* Eliminates repetitive `useEffect()` patterns
-
-This architecture mimics the developer experience of tools such as **React Query** and **SWR** while remaining lightweight and fully customizable.
-
----
-
-## 🔒 Zero-Trust Authentication System
-
-Designed a secure authentication flow centered around **HttpOnly Cookies**.
-
-### Security Measures
-
-✔ No JWTs stored in localStorage
-
-✔ Protection against XSS attacks
-
-✔ Axios credential interception
-
-✔ Secure cookie transport
-
-✔ Backend cookie validation middleware
-
-### Security Stack
-
-```text
-Client
-   ↓
-HttpOnly Cookie
-   ↓
-Axios withCredentials
-   ↓
-Express Middleware
-   ↓
-Protected Routes
-```
+### Backend (REST API)
+- **Runtime**: Node.js (v18+)
+- **Framework**: Express.js
+- **Database**: MongoDB Atlas + Mongoose ORM
+- **Intelligence**: Google Gemini (via `@google/genai`)
+- **Validation**: Zod (Enforced request-body shape checking)
 
 ---
 
-## 📐 Strict Type-Safe Domain Modeling
+## 🎮 Live Application Access
 
-Maintained complete type consistency between frontend and backend systems.
+You can explore the live application at: **[wallex-opal.vercel.app](https://wallex-opal.vercel.app/)**
 
-### Architecture
+### Demo Accounts
+The system is seeded with multiple distinct persona profiles demonstrating specialized feature flags.
+> **Universal OTP Password:** `123456`
 
-```text
-MongoDB Schema
-      ↓
-Mongoose Models
-      ↓
-TypeScript Interfaces
-      ↓
-React Components
-```
-
-Benefits:
-
-* Zero type drift
-* Improved maintainability
-* Better IDE support
-* Compile-time safety
+- **Aisha Patel** (`aisha@example.com`) - *High Earner Profile* (Shows Investment recommendations & volatility)
+- **Meera Singh** (`meera@example.com`) - *Budget Conscious Profile* (Shows Spending alerts & optimizations)
+- **Farida Ahmed** (`farida@example.com`) - *Parent Portal View* (Tracks Aisha's linked allowance requests)
 
 ---
 
-## 🧪 Automated Testing Infrastructure
+## 💻 Local Development Setup
 
-Implemented a testing framework using:
+To run this application locally on your machine, follow these steps:
 
-* Vitest
-* jsdom
-* React Testing Library
+### 1. Requirements
+Ensure you have Node.js installed on your machine and a free [Google AI Studio](https://aistudio.google.com/app/apikey) API Key.
 
-### Coverage
-
-* Financial calculations
-* Charting algorithms
-* Edge-case handling
-* Divide-by-zero protection
-* Floating-point precision validation
-
----
-
-## 🎨 Premium Mobile-First UI/UX
-
-Crafted a highly interactive interface inspired by modern iOS applications.
-
-### Design Features
-
-* Floating bottom navigation
-* Glassmorphism effects
-* Bento-grid dashboards
-* Framer Motion animations
-* Hardware-accelerated transitions
-* Responsive mobile-first layouts
-
----
-
-# 🏗️ System Architecture
-
-```text
-┌─────────────────────────┐
-│      React Frontend     │
-│  TypeScript + Vite      │
-└──────────┬──────────────┘
-           │
-           ▼
-┌─────────────────────────┐
-│     Express Backend     │
-│      Node.js API        │
-└──────┬─────────┬────────┘
-       │         │
-       ▼         ▼
-┌──────────┐ ┌──────────┐
-│ MongoDB  │ │ Gemini AI│
-│ Database │ │ Service  │
-└──────────┘ └──────────┘
-```
-
----
-
-# 🛠️ Tech Stack
-
-## Frontend
-
-| Technology    | Purpose      |
-| ------------- | ------------ |
-| React 18      | UI Framework |
-| TypeScript    | Type Safety  |
-| Vite          | Build Tool   |
-| Tailwind CSS  | Styling      |
-| Framer Motion | Animations   |
-| Vitest        | Testing      |
-
----
-
-## Backend
-
-| Technology    | Purpose       |
-| ------------- | ------------- |
-| Node.js       | Runtime       |
-| Express.js    | API Layer     |
-| MongoDB Atlas | Database      |
-| Mongoose      | ODM           |
-| Zod           | Validation    |
-| Google Gemini | AI Processing |
-
----
-
-# 🎯 Core Features
-
-### Smart Expense Tracking
-
-* AI-powered transaction categorization
-* Automated spending insights
-* Dynamic expense breakdowns
-
-### Financial Analytics
-
-* Spending trends
-* Category-wise analysis
-* Budget tracking
-
-### Student-Focused Experience
-
-* Allowance management
-* Parent-linked profiles
-* Spending optimization alerts
-
-### AI Recommendations
-
-* Personalized financial insights
-* Spending improvement suggestions
-* Intelligent categorization engine
-
----
-
-# 🌐 Live Application
-
-### Demo URL
-
-```bash
-https://wallex-opal.vercel.app
-```
-
----
-
-# 👤 Demo Accounts
-
-### Universal OTP
-
-```bash
-123456
-```
-
-| User                                            | Profile Type             |
-| ----------------------------------------------- | ------------------------ |
-| [aisha@example.com](mailto:aisha@example.com)   | High Earner Profile      |
-| [meera@example.com](mailto:meera@example.com)   | Budget Conscious Profile |
-| [farida@example.com](mailto:farida@example.com) | Parent Portal View       |
-
----
-
-# 🚀 Local Development
-
-## 1️⃣ Clone Repository
-
+### 2. Backend Initialization
 ```bash
 git clone https://github.com/utsavukani/wallex.git
-```
-
----
-
-## 2️⃣ Backend Setup
-
-```bash
 cd wallex/backend
 npm install
 ```
-
-Create a `.env` file:
-
+Create a `.env` file in the `backend/` directory:
 ```env
 MONGODB_URI=mongodb://localhost:27017/wallex
 JWT_SECRET=development_secret_key_123
@@ -288,75 +80,29 @@ GEMINI_API_KEY=your_gemini_api_key_here
 PORT=3001
 CORS_ORIGIN=http://localhost:5173
 ```
-
-Run Backend:
-
 ```bash
 npm start
 ```
 
----
-
-## 3️⃣ Frontend Setup
-
+### 3. Frontend Initialization
+In a new terminal wrapper:
 ```bash
 cd wallex/Frontend
 npm install
 npm run dev
 ```
-
-Application available at:
-
-```bash
-http://localhost:5173
-```
+Navigate to `http://localhost:5173`.
 
 ---
 
-# 🔐 Security Hardening
+## 🔒 Security Posture & Hardening
 
-### Authentication
-
-* HttpOnly Cookies
-* Secure JWT Transport
-* Session Validation Middleware
-
-### API Protection
-
-* Helmet.js Security Headers
-* Strict CORS Policies
-* Origin Whitelisting
-
-### Data Validation
-
-* Zod Runtime Validation
-* Schema Enforcement
-* Malformed Request Protection
+1. **HttpOnly Cookies**: JWTs are strictly passed via headers unavailable to DOM JavaScript execution.
+2. **Helmet.js Headers**: Protects the API against clickjacking and sniffing.
+3. **CORS Explicit Whitelisting**: Strict origin rejection.
+4. **Zod Parsing**: Impossible to crash the API via malformed JSON payloads due to runtime schema validation.
 
 ---
 
-# 📈 Engineering Principles
-
-* Test-Driven Development (TDD)
-* Stateless Service Architecture
-* Strict Type Safety
-* Mobile-First Design
-* Security-First Development
-* Component Reusability
-* Clean Architecture Patterns
-
----
-
-# 📝 License
-
-Distributed under the **MIT License**.
-
----
-
-<div align="center">
-
-### Built to demonstrate enterprise-scale full-stack engineering, AI integration, and modern product development practices.
-
-⭐ If you found this project interesting, consider giving it a star.
-
-</div>
+## 📝 License
+This project is open source and available under the standard MIT License.
